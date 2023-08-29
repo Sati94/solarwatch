@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  solarwatch:
+    image: ${DOCKER_REGISTRY-}solarwatch
+    build:
+      context: .
+      dockerfile: SolarWatch\Dockerfile

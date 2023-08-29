@@ -5,9 +5,9 @@ name: .NET and Docker
 
 on:
   push:
-    branches: [ "development" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "development" ]
+    branches: [ "main" ]
   
     
 jobs:

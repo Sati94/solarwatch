@@ -1,0 +1,40 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET and Docker
+
+on:
+  push:
+    branches: [ "development" ]
+  pull_request:
+    branches: [ "development" ]
+  
+    
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x
+    - name: Restore dependencies
+      run: dotnet restore SolarWatch/SolarWatch/SolarWatch.csproj
+    - name: Build
+      run: dotnet build SolarWatch/SolarWatch/SolarWatch.csproj --no-restore
+    - name: Test
+      run: dotnet test SolarWatch/SolarWatchTest/SolarWatchTest.csproj --verbosity normal
+    - name: Login to DockerHub
+      run: docker login -u sati94 -p dckr_pat_mGxN799sueicpTfdX2zNHzu5JaA
+
+    - name: Build Docker Image
+      run: docker build -t solarwatch SolarWatch/SolarWatch
+
+    - name: Tag Docker Image
+      run: docker tag solarwatch:latest sati94/solarwatch:latest
+
+    - name: Push Docker Image
+      run: docker push sati94/solarwatch:latest

@@ -1,6 +1,6 @@
-# solarwatch
+# SolarWatch
 
-Solar Watch is a web application powered by a C# ASP.NET backend that offers users access to accurate sunrise and sunset times, fetched from a free API. These essential solar data points are stored in a database, ensuring reliable daily access.
+SolarWatch is a web application powered by a C# ASP.NET backend that offers users access to accurate sunrise and sunset times, fetched from a free API. These essential solar data points are stored in a database, ensuring reliable daily access.
 
 # Key Features
 Retrieve sunrise and sunset times from a free API.
